@@ -50,25 +50,6 @@ class controllerGrades extends Controller
         }
     }
 
-    public function registro()
-    {
-        return view('registro');
-    }
-
-    public function guardar(Request $request){
-        $name = $request->input('name');
-        $email = $request->input('email');
-        $password = $request->input('password');
-
-        DB::table('users')->insert([
-            'name' => $name,
-            'email' => $email,
-            'password' => Hash::make($password),
-        ]);
-        die("Usuario Guardado");
-        die();
-    }
-
     public function menulog(Request $request)
     { 
         //Llamar sesion
@@ -79,7 +60,6 @@ class controllerGrades extends Controller
                 $materias = DB::table('materias')
                 ->join('alumnoMateria', 'alumnoMateria.idMateria', '=', 'materias.id')
                 ->where('alumnoMateria.idAlumno', '=', $user->id)->get();
-                dump($user);
                 return view('menuLogeado');
             }
     

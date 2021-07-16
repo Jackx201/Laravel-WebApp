@@ -1,9 +1,9 @@
 @extends('layouts.plantilla')
-<h1 style="text-align: center; margin: 1%">BASE DE DATOS</h1>
+<h1 style="text-align: center; margin: 1%">Database</h1>
 @section('content')
 
 <div class="container col-md-4" style="margin-top: 2%">
-    <h2>USUARIOS EN LA BASE DE DATOS</h2>
+    <h2>All Users:</h2>
 @foreach ($data as $d)
     <li>{{$d->id}} - {{$d->name}}</li>
 @endforeach

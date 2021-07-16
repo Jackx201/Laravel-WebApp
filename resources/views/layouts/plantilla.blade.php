@@ -4,6 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -33,27 +34,41 @@
 
           @else
 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{route('menulog')}}">Admin</a>
+          {{-- Dropdown List for student--}}
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{Auth::user()->name}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{route('materias')}}">Materias</a>
+              <a class="dropdown-item" href="{{route('grades')}}">Curso</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{route('registro')}}">Signup</a>
-          </li>
+          {{-- Dropdown  List for student --}}
 
+          {{-- Dropdown List for Admin--}}
 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{route('grades')}}">Curso</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Admin: {{Auth::user()->name}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{route('admin.index')}}">Add User</a>
+              <a class="dropdown-item" href="{{route('admin.create')}}">Assign Subjects</a>
+              <a class="dropdown-item" href="http://127.0.0.1/phpmyadmin/index.php">Database</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{{route('materias')}}">Subjects</a>
+            </div>
           </li>
+          {{-- Dropdown  List for Admin --}}
 
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{route('logout')}}">Logout</a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{route('materias')}}">Materias</a>
-          </li>
-
           @endguest
           
         </ul>
@@ -77,5 +92,9 @@
 <!-- Footer -->
   @show
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   </body>
 </html>
