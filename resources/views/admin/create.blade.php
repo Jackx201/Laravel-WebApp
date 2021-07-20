@@ -38,7 +38,36 @@
             </table>
         </div>
     </div>
+    <hr>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <th>Cuatrimestre</th>
+                    <th>Nombre</th>
+                </thead>
+                <tbody>
+                    @foreach ($subjects as $m)
+                        <tr>
+                            <td>{{$m->cuatri}}</td>
+                            <td>{{$m->materia}}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 
-
+        <form action="" method="get">
+            @if (isset($_GET['cuatri']))
+            <input type="hidden" name="cuatri" value={{$_GET['cuatri']}}>
+            @endif
+            <input type="hidden" name="save" value="si">
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
 </div>
 @stop
+
+@section('footer')
+    
+@endsection

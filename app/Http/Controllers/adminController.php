@@ -31,7 +31,32 @@ class adminController extends Controller
         } else {
             $materias = DB::table('materias')->get();
         }
-        return view('admin.create', compact('materias'));
+        $id=session("id");
+        $subjects = DB::table('materias')
+        ->join('alumnomateria', 'alumnomateria.idMateria', '=' ,'materias.id')
+        ->where('alumnomateria.idAlumno', '=' ,$id) -> get();
+
+        if(isset($_GET['cuatri']) && isset($_GET['save']) == "si"){
+            $resp = $subjects->where('cuatri', $_GET['cuatri'])->first();
+            if(!$resp){
+                //dump($resp);
+                dump("Datos guardados");
+                foreach($materias as $m){
+                    DB::table('alumnomateria')
+                    ->insert([
+                        'idAlumno' => $id,
+                        'idMateria' => $m->id,
+                        'letra' => 'A',
+                        'calif' => '10',
+                    ]);
+                }
+            }
+        } else {
+            //dump("Datos no guardados");
+        }
+
+
+        return view('admin.create', compact('materias', 'subjects'));
     }
 
     /**
