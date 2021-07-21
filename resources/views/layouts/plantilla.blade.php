@@ -82,7 +82,7 @@
 </div>
   @section('footer')
       <!-- Footer -->
-<footer class="page-footer font-small purple pt-4 fixed-bottom"> 
+<footer class="page-footer font-small purple pt-4"> 
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
     <a class="text-reset fw-bold" href="https://jackx201.itch.io/">© Zahúl Guadalupe Domínguez Chávez 2021 </a>
