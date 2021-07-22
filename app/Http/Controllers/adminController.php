@@ -24,39 +24,9 @@ class adminController extends Controller
      */
     public function create()
     {
-        if(isset($_GET['cuatri']) && $_GET['cuatri'] !=0)
-        {
-            $materias = DB::table('materias')->where('cuatri', '=', $_GET['cuatri'])->get();
+        $students = DB::table('users')->get();
 
-        } else {
-            $materias = DB::table('materias')->get();
-        }
-        $id=session("id");
-        $subjects = DB::table('materias')
-        ->join('alumnomateria', 'alumnomateria.idMateria', '=' ,'materias.id')
-        ->where('alumnomateria.idAlumno', '=' ,$id) -> get();
-
-        if(isset($_GET['cuatri']) && isset($_GET['save']) == "si"){
-            $resp = $subjects->where('cuatri', $_GET['cuatri'])->first();
-            if(!$resp){
-                //dump($resp);
-                dump("Datos guardados");
-                foreach($materias as $m){
-                    DB::table('alumnomateria')
-                    ->insert([
-                        'idAlumno' => $id,
-                        'idMateria' => $m->id,
-                        'letra' => 'A',
-                        'calif' => '10',
-                    ]);
-                }
-            }
-        } else {
-            //dump("Datos no guardados");
-        }
-
-
-        return view('admin.create', compact('materias', 'subjects'));
+        return view('admin.create', compact('students'));
     }
 
     /**
@@ -97,9 +67,44 @@ class adminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    /* * * * * * * * * * * *  * * * * * * * * * * *  */
+    /* * * * * * * * * * * EDIT * * * * * * * * * *  */
+    /* * * * * * * * * * * *  * * * * * * * * * * *  */
+    /* * * * * * * * * * * *  * * * * * * * * * * *  */
+
     public function edit($id)
     {
-        //
+        // Create -> Edit
+        if(isset($_GET['cuatri']) && $_GET['cuatri'] !=0)
+        {
+            $materias = DB::table('materias')->where('cuatri', '=', $_GET['cuatri'])->get();
+
+        } else {
+            $materias = DB::table('materias')->get();
+        }
+        $subjects = DB::table('materias')
+        ->join('alumnomateria', 'alumnomateria.idMateria', '=' ,'materias.id')
+        ->where('alumnomateria.idAlumno', '=' ,$id) -> get();
+
+        if(isset($_GET['cuatri']) && isset($_GET['save']) == "si"){
+            $resp = $subjects->where('cuatri', $_GET['cuatri'])->first();
+            if(!$resp){
+                foreach($materias as $m)
+                {
+                    DB::table('alumnomateria')
+                    ->insert([
+                        'idAlumno' => $id,
+                        'idMateria' => $m->id,
+                        'letra' => 'A',
+                        'calif' => '10',
+                    ]);
+                }
+            }
+        } else {
+            //dump("Datos no guardados");
+        }
+        return view('admin.edit', compact('materias', 'subjects'));
     }
 
     /**
@@ -125,21 +130,3 @@ class adminController extends Controller
         //
     }
 }
-
-/*   TEMP
- *     
- *   public function index(Request $request)
-    {
-        $name = $request->input('name');
-        $email = $request->input('email');
-        $password = $request->input('password');
-
-        DB::table('users')->insert([
-            'name' => $name,
-            'email' => $email,
-            'password' => Hash::make($password),
-        ]);
-        return view('admin.registro')->with('registro', 'si');
-    }
- *    
- */

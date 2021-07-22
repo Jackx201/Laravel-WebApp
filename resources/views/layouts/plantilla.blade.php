@@ -8,7 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Hello, world!</title>
+    <title>School Database</title>
   </head>
   <body>
   @section('header')
@@ -65,6 +65,22 @@
             </div>
           </li>
           {{-- Dropdown  List for Admin --}}
+
+          {{-- Dropdown List for Teachers--}}
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Teacher: {{Auth::user()->name}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{route('teacher.index')}}">Assign Subjects to teach</a>
+              <a class="dropdown-item" href="#">Grade</a>
+              <a class="dropdown-item" href="#">Database</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Subjects</a>
+            </div>
+          </li>
+          {{-- Dropdown  List for Teachers --}}
 
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{route('logout')}}">Logout</a>

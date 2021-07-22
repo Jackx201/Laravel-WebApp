@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 //Calling our controller
 use App\Http\Controllers\controllerGrades;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\teacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,3 +53,4 @@ Route::get('/logout', [controllerGrades::class, 'logout']) -> name('logout');
 Route::get('/materias', [controllerGrades::class, 'materias']) -> name('materias');
 
 Route::resource('/admin', adminController::class);
+Route::resource('/teacher', teacherController::class);
