@@ -35,5 +35,41 @@
                 </form>
             </div>            {{-- End Card-Body --}}
         </div>        {{-- End card --}}
+
+        <hr>{{-- Delete --}}
+
+        <div class="card">
+            <h1 style="text-align: center;">Subjects to teach</h1>
+            <div class="card-body">
+
+                <form action="" method="get">
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Quarter</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($teacher as $sub)
+                                <tr>
+                                    <th>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value={{$sub->id}} name="IdSub[]" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                {{$sub->materia}}
+                                            </label>
+                                        </div>
+                                    </th>
+                                    <th>{{$sub->cuatri}}</th>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <button type="submit" class="btn btn-danger" value="1" name="deleted">Delete</button>
+                </form>
+            </div>            {{-- End Card-Body --}}
+        </div>        {{-- End card --}}
     </div>     {{-- End Container --}}
 @stop

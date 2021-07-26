@@ -63,9 +63,9 @@ class teacherController extends Controller
         $teacher = DB::table('materias')
         ->join('teachersubject', 'teachersubject.idSubject', '=', 'materias.id')
         ->where('teachersubject.idTeacher', '=', $id) -> get();
-        dump($subjects, $users, $teacher);
+        //dump($subjects, $users, $teacher);
 
-        if(isset($_GET['IdSub']) && $_GET['save'] == "1" && !empty($_GET['IdSub']))
+        if(isset($_GET['save']) && $_GET['save'] == "1" && !empty($_GET['IdSub']))
         {
             foreach($_GET['IdSub'] as $subject)
             {
@@ -79,7 +79,17 @@ class teacherController extends Controller
                 }
             }
         }
-        return view('teacher.edit', compact('subjects', 'users'));
+
+        if( isset($_GET['deleted']) && $_GET['deleted'] == "1" && !empty($_GET['IdSub']))
+        {
+            foreach($_GET['IdSub'] as $subject)
+            {
+                DB::table('teachersubject')
+                ->where('id', '=', $subject)
+                ->delete();
+            }
+        }
+        return view('teacher.edit', compact('subjects', 'users', 'teacher'));
     }
 
     /**
