@@ -22,7 +22,7 @@
                                <th> {{$teach -> email}} </th>
                                <th width="3%">
                                    {{-- We send the id of the selected student to Admin.edit --}}
-                                   <a href=" {{route('admin.edit', $teach->id)}}" class="btn btn-success">Asign</a>
+                                   <a href=" {{route('teacher.edit', $teach->id)}}" class="btn btn-success">Asign</a>
                                </th>
                            </tr>
                        @endforeach

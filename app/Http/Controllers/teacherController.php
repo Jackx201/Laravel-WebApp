@@ -58,7 +58,28 @@ class teacherController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subjects = DB::table('materias')->get();
+        $users = DB::table('users')->where('id', '=', $id) -> first();
+        $teacher = DB::table('materias')
+        ->join('teachersubject', 'teachersubject.idSubject', '=', 'materias.id')
+        ->where('teachersubject.idTeacher', '=', $id) -> get();
+        dump($subjects, $users, $teacher);
+
+        if(isset($_GET['IdSub']) && $_GET['save'] == "1" && !empty($_GET['IdSub']))
+        {
+            foreach($_GET['IdSub'] as $subject)
+            {
+                $resp = $teacher->where('idSubject', $subject) -> first();
+                if(!$resp)
+                {
+                    DB::table('teachersubject')->insert([
+                        'idTeacher' => $id,
+                        'idSubject' => $subject,
+                    ]);
+                }
+            }
+        }
+        return view('teacher.edit', compact('subjects', 'users'));
     }
 
     /**
