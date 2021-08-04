@@ -25,7 +25,24 @@ class teacherController extends Controller
      */
     public function create()
     {
-        //
+        $id = session('id');
+        $teacherSubject = DB::table('materias')
+        ->join('teachersubject', 'teachersubject.idSubject', '=', 'materias.id')
+        ->where('teachersubject.idTeacher', '=', $id)
+        ->get();
+        //dump($teacherSubject);  
+        
+        if(isset($_GET['cuatri']) && $_GET['cuatri'] != 0 && $_GET['search'] == "1")
+        {
+            $student = DB::table('alumnoMateria')
+            ->join('users', 'alumnoMateria.idAlumno', '=', 'users.id')
+            ->where('alumnoMateria.idMateria', '=', $_GET['cuatri'])
+            ->get();
+        } else {
+            $student[0] = 0;
+        }
+        dump($student);
+        return view('teacher.create', compact('teacherSubject', 'student'));
     }
 
     /**

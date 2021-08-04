@@ -57,8 +57,9 @@
               Admin: {{Auth::user()->name}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{route('teacher.index')}}">Assign Subjects to teachers</a>
               <a class="dropdown-item" href="{{route('admin.index')}}">Add User</a>
-              <a class="dropdown-item" href="{{route('admin.create')}}">Assign Subjects</a>
+              <a class="dropdown-item" href="{{route('admin.create')}}">Assign Subjects to students</a>
               <a class="dropdown-item" href="http://127.0.0.1/phpmyadmin/index.php">Database</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{route('materias')}}">Subjects</a>
@@ -73,8 +74,7 @@
               Teacher: {{Auth::user()->name}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{route('teacher.index')}}">Assign Subjects to teach</a>
-              <a class="dropdown-item" href="#">Grade</a>
+              <a class="dropdown-item" href="{{route('teacher.create')}}">Grade</a>
               <a class="dropdown-item" href="#">Database</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Subjects</a>

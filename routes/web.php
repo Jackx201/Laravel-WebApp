@@ -53,4 +53,4 @@ Route::get('/logout', [controllerGrades::class, 'logout']) -> name('logout');
 Route::get('/materias', [controllerGrades::class, 'materias']) -> name('materias');
 
 Route::resource('/admin', adminController::class);
-Route::resource('/teacher', teacherController::class);
+Route::resource('/teacher', teacherController::class) -> only('index', 'edit', 'update', 'create', 'store');

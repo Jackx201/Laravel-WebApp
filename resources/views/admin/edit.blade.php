@@ -16,8 +16,10 @@
 
             <select class="custom-select" name="cuatri" id="">
                 <option selected value="0"> Select a course </option>
+                <option value="1"> 1st </option>
                 <option value="2"> 2nd </option>
-                <option value="5"> 5th </option>
+                <option value="3"> 3rd </option>
+                <option value="4"> 4th </option>
             </select>
             <button type="submit" class="btn">Search</button>
         </form>
