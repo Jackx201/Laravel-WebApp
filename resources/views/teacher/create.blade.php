@@ -6,6 +6,17 @@
         <div class="card-body">
             <h1>Grading Students</h1>
 
+            @if(isset($_GET['ok']))
+
+            <div class="alert alert-info" role="alert">
+                Saved correctly
+            </div>
+            @elseif(isset($_GET['err']))
+            <div class="alert alert-info" role="alert">
+                At least 1 student must be graded.
+            </div>
+            @endif
+
             <form action="" method="get">
             <select class="form-select" name="cuatri" aria-label="Default select example">
                 <option selected>Select a subject</option>
@@ -21,6 +32,9 @@
 
     <div class="card">
         <div class="card-body">
+            <form action={{route('teacher.store')}} method="POST">
+                @csrf
+            
 
             <table class="table table-striped table-hover">
                 <thead>
@@ -36,7 +50,11 @@
                     @foreach ($student as $st)
                         <tr>
                             <th>{{$st->name}}</th>
-                            <th></th>
+                            <th>
+                                <input type="hidden" name="id[]" value={{$st->id}}>
+                                <input type="text" name="calif[]">
+                                <input type="hidden" name="cuatri" value={{$_GET['cuatri']}}>
+                            </th>
                             <th> <label for="">{{$st->calif}}</label> </th>
                         </tr>
                     @endforeach
@@ -44,7 +62,8 @@
                 </tbody>
 
             </table>
-
+            <button type="submit" class="btn btn-success">Save</button>
+        </form>
         </div> {{-- End Card Body --}}
     </div> {{-- End Card --}}
 

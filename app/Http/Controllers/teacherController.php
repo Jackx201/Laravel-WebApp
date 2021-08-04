@@ -53,7 +53,30 @@ class teacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = $request->input('id');
+        $grade = $request->input('calif');
+        $cuatri = $request->input('cuatri');
+
+        if(isset($cuatri) && array_filter($grade) != [])
+        {
+
+        
+            foreach($id as $key => $val)
+            {
+                if($grade[$key] != null)
+                {
+                    DB::table('alumnoMateria')
+                    ->where('idMateria', '=', $cuatri)
+                    ->where('idAlumno', '=', $val)
+                    ->update(['calif' => $grade[$key]]);
+                }
+
+                
+            }
+            return redirect()->route('teacher.create', 'ok');
+        }
+        return redirect()->route('teacher.create', 'err');
+        dump($request->calif, $request->id, $request->cuatri);
     }
 
     /**
