@@ -30,6 +30,12 @@ class controllerGrades extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
 
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+            'captcha' => 'required',
+        ]);
+
         $credencials = $request->only('email', 'password');
         // dump ($credencials);
         // die();
