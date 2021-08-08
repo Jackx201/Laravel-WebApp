@@ -33,7 +33,7 @@ class controllerGrades extends Controller
         $request->validate([
             'email' => 'required',
             'password' => 'required',
-            'captcha' => 'required',
+            'captcha' => 'required|captcha',
         ]);
 
         $credencials = $request->only('email', 'password');

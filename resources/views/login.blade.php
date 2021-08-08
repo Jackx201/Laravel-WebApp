@@ -1,22 +1,23 @@
 @extends('layouts.plantilla')
 @section('content')
 
-@if ($errors->all())
-@foreach ($errors as $error)
+
+
+
+<h1 style="text-align: center;">LOGIN</h1>
+
+<div class="container col-md-6" style="margin-top: 2%">
+    <h3>Login</h3>
+    <form role="form" action="/valida" method="post" autocomplete="off">
+
+    <div class="form-group">
+        @if ($errors->any())
+@foreach ($errors->all() as $error)
     <div class="alert alert-danger" role="alert">
         {{$error}}
     </div>
 @endforeach
 @endif
-
-
-<h1 style="text-align: center">LOGIN</h1>
-
-<div class="container col-md-4" style="margin-top: 2%">
-    <h3>Login</h3>
-    <form role="form" action="/valida" method="post" autocomplete="off">
-
-    <div class="form-group">
         @csrf
     <label for="email" class="label" style="margin-top: 3%;">Usuario:</label>
     <input type="email" class="form-control" name="email" placeholder="Usuario" style="margin-top: 1%;">
@@ -27,11 +28,11 @@
     </div>  
 
     <p>
-        <div class="mb-3">
-            <span class="captcha">
+        <div class="mb-3" style="text-align: center;">
+            <span class="captcha" style="">
                 {!! captcha_img() !!}
             </span>
-            <button id="reload" class="btn btn-warning">Reload</button>
+            <button id="reload" class="btn btn-success">Reload</button>
         </div>
 
         <div class="mb-3">

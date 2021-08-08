@@ -12,7 +12,7 @@
                 Saved correctly
             </div>
             @elseif(isset($_GET['err']))
-            <div class="alert alert-info" role="alert">
+            <div class="alert alert-danger" role="alert">
                 At least 1 student must be graded.
             </div>
             @endif
