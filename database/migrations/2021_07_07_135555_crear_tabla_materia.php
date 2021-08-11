@@ -31,7 +31,7 @@ class CrearTablaMateria extends Migration
     {
         Schema::table('materias', function (Blueprint $table) {
             //Eliminar tabla
-            Schema::dropTable('materials');
+            Schema::dropIfExists('materias');
         });
     }
 }
