@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\controllerGrades;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\teacherController;
+use App\Http\Controllers\usersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,28 +18,6 @@ use App\Http\Controllers\teacherController;
 |
 
 -- VIEWS MANAGEMENT --
-
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/5-appweb', function() {
-    //Define variables.
-    $nom = "Arquímidez";
-    $mats = array("Diseño Web", "Base de datos", "OOP");
-    $grade = 8;
-    $num = 1;
-    //Give parameters.
-    return view('hola')
-    ->with('nom', $nom)
-    ->with('mats', $mats)
-    ->with('grade', $grade)
-    ->with('num', $num);
-});
-
-Route::get('/log', function() {
-    return view('login');
-});
 
 VIEWS MANAGEMENT USING CONTROLLERS */ 
 //Nombre que aparecerá en el url - Nombre de la función - Nombre propio
@@ -54,3 +33,4 @@ Route::get('/materias', [controllerGrades::class, 'materias']) -> name('materias
 
 Route::resource('/admin', adminController::class);
 Route::resource('/teacher', teacherController::class) -> only('index', 'edit', 'update', 'create', 'store');
+Route::resource('/users', usersController::class);

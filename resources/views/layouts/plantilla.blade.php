@@ -44,7 +44,7 @@
               <a class="dropdown-item" href="{{route('materias')}}">Materias</a>
               <a class="dropdown-item" href="{{route('grades')}}">Curso</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="{{route('materias')}}">Subjects</a>
             </div>
           </li>
 
@@ -62,7 +62,7 @@
               <a class="dropdown-item" href="{{route('admin.create')}}">Assign Subjects to students</a>
               <a class="dropdown-item" href="http://127.0.0.1/phpmyadmin/index.php">Database</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{{route('materias')}}">Subjects</a>
+              <a class="dropdown-item" href="{{route('users.index')}}">Permissions</a>
             </div>
           </li>
           {{-- Dropdown  List for Admin --}}
