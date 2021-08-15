@@ -8,7 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class controllerGrades extends Controller
 {
-    //
+    // public function __construct()
+    // {
+    //    $this->middleware('can:student.subjects')->only('menulog'); 
+    // }
+
     public function index()
     {
         return view('index');
@@ -37,10 +41,7 @@ class controllerGrades extends Controller
         ]);
 
         $credencials = $request->only('email', 'password');
-        // dump ($credencials);
-        // die();
 
-        
         if(Auth::attempt($credencials)){
         $usuario = DB::table('users')
         ->where('email', '=', $email)
@@ -61,12 +62,15 @@ class controllerGrades extends Controller
         //Llamar sesion
         $id = session('id');
         $user = DB::table('users')->where('id', '=', $id)->first();
+
         //dump($user);
 
                 $materias = DB::table('materias')
                 ->join('alumnoMateria', 'alumnoMateria.idMateria', '=', 'materias.id')
+                ->join('teachersubject', 'teachersubject.idSubject', '=', 'materias.id')
+                ->join('users', 'users.id', '=', 'teachersubject.idTeacher')
                 ->where('alumnoMateria.idAlumno', '=', $user->id)->get();
-                return view('menuLogeado');
+                return view('menuLogeado', compact('user', 'materias'));
             }
     
 

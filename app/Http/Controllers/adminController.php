@@ -12,6 +12,15 @@ class adminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+       //Blocking Index  
+       $this->middleware('can:admin.add.user')->only('index'); 
+       $this->middleware('can:admin.assign.subjects.student')->only('create'); 
+       $this->middleware('can:admin.assign.subjects.student')->only('edit'); 
+    }
+
     public function index()
     {
         return view('admin.index');

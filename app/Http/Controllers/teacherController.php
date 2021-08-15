@@ -12,6 +12,13 @@ class teacherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('can:teacher.grade.subjects')->only('create'); 
+    }
+
+
     public function index()
     {
         $teacher = DB::table('users')->get();
@@ -41,7 +48,6 @@ class teacherController extends Controller
         } else {
             $student[0] = 0;
         }
-        dump($student);
         return view('teacher.create', compact('teacherSubject', 'student'));
     }
 

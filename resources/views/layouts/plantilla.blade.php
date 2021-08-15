@@ -38,13 +38,13 @@
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{Auth::user()->name}}
+              Student: {{Auth::user()->name}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{{route('materias')}}">Materias</a>
               <a class="dropdown-item" href="{{route('grades')}}">Curso</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{{route('materias')}}">Subjects</a>
+              <a class="dropdown-item" href="{{route('menulog')}}">Subjects</a>
             </div>
           </li>
 
@@ -57,12 +57,20 @@
               Admin: {{Auth::user()->name}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              @can('admin.assign.subjects.teacher')
               <a class="dropdown-item" href="{{route('teacher.index')}}">Assign Subjects to teachers</a>
+              @endcan
+              @can('admin.add.user')
               <a class="dropdown-item" href="{{route('admin.index')}}">Add User</a>
+              @endcan
+              @can('admin.assign.subjects.student')
               <a class="dropdown-item" href="{{route('admin.create')}}">Assign Subjects to students</a>
-              <a class="dropdown-item" href="http://127.0.0.1/phpmyadmin/index.php">Database</a>
+              @endcan
+              @can('admin.assign.permission')
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{{route('users.index')}}">Permissions</a>
+              <a class="dropdown-item" href="{{route('users.index')}}">Permissions</a> 
+              <a class="dropdown-item" href="http://127.0.0.1/phpmyadmin/index.php">Database</a> 
+              @endcan
             </div>
           </li>
           {{-- Dropdown  List for Admin --}}

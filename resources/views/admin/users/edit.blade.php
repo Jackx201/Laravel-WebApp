@@ -4,6 +4,12 @@
 <div class="card">
     <h1>Show Roles</h1>
 
+    @if (session('info'))
+        <div class="alert alert-success" role=""> 
+            {{session('info')}}
+        </div>
+    @endif
+
     <div class="card-header">
         User: {{$usr -> name}}
     </div>

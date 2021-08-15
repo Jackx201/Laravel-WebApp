@@ -33,4 +33,4 @@ Route::get('/materias', [controllerGrades::class, 'materias']) -> name('materias
 
 Route::resource('/admin', adminController::class);
 Route::resource('/teacher', teacherController::class) -> only('index', 'edit', 'update', 'create', 'store');
-Route::resource('/users', usersController::class);
+Route::resource('/users', usersController::class)->middleware('can:admin.assign.permission');
