@@ -8,11 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class controllerGrades extends Controller
 {
-    // public function __construct()
-    // {
-    //    $this->middleware('can:student.subjects')->only('menulog'); 
-    // }
-
+    public function __construct(){
+        $this->middleware('auth')->only('menulog', 'materias');
+    }
     public function index()
     {
         return view('index');

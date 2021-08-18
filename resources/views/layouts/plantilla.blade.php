@@ -35,7 +35,7 @@
           @else
 
           {{-- Dropdown List for student--}}
-
+          @can('student.subjects')  
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Student: {{Auth::user()->name}}
@@ -47,11 +47,12 @@
               <a class="dropdown-item" href="{{route('menulog')}}">Subjects</a>
             </div>
           </li>
-
           {{-- Dropdown  List for student --}}
+          @endcan
+
 
           {{-- Dropdown List for Admin--}}
-
+          @can('admin.assign.subjects.teacher')
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Admin: {{Auth::user()->name}}
@@ -73,10 +74,12 @@
               @endcan
             </div>
           </li>
+          @endcan
           {{-- Dropdown  List for Admin --}}
 
           {{-- Dropdown List for Teachers--}}
 
+          @can('teacher.grade.subjects')
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Teacher: {{Auth::user()->name}}
@@ -89,7 +92,7 @@
             </div>
           </li>
           {{-- Dropdown  List for Teachers --}}
-
+          @endcan
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{route('logout')}}">Logout</a>
           </li>

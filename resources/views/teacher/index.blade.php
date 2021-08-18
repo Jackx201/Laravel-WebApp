@@ -31,5 +31,9 @@
            </table>
         </div> {{-- End Card-Body --}}
     </div> {{-- End Card --}}
+
+    <div class="card-footer">
+        {{$teacher->links()}}
+    </div>
 </div>
 @stop

@@ -33,7 +33,7 @@ class adminController extends Controller
      */
     public function create()
     {
-        $students = DB::table('users')->get();
+        $students = DB::table('users')->paginate(7);
 
         return view('admin.create', compact('students'));
     }
