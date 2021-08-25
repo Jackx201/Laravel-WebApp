@@ -1,12 +1,18 @@
 {{-- This was moved from create to edit --}}
-<h1 style="text-align: center">Menu Materias</h1>
+<h1 style="text-align: center">Assign subjects to students</h1>
 @extends('layouts.plantilla')
 @section('content')
 
-<div class="container col-md-7" style="margin-top: 2%">
-    <div class="card">
+<div class="container col-md-8" style="margin-top: 2%">
+    <h2 style="text-align: center">Assigning subjects to: {{$user->name}}</h5>
+</div>
 
+
+<div class="container col-md-8" style="margin-top: 2%">
+    <div class="card">
         <form action="" method="get">
+
+            
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -25,10 +31,11 @@
         </form>
 
         <div class="card-body">
+            
             <table class="table table-striped">
                 <thead>
-                    <th>Cuatrimestre</th>
-                    <th>Nombre</th>
+                    <th>Quarter</th>
+                    <th>Name</th>
                 </thead>
                 <tbody>
                     @foreach ($materias as $m)
@@ -46,8 +53,8 @@
         <div class="card-body">
             <table class="table table-striped">
                 <thead>
-                    <th>Cuatrimestre</th>
-                    <th>Nombre</th>
+                    <th>Quarter</th>
+                    <th>Name</th>
                 </thead>
                 <tbody>
                     @foreach ($subjects as $m)
@@ -58,15 +65,16 @@
                     @endforeach
                 </tbody>
             </table>
+            <form action="" method="get">
+                @if (isset($_GET['cuatri']))
+                <input type="hidden" name="cuatri" value={{$_GET['cuatri']}}>
+                @endif
+                <input type="hidden" name="save" value="si">
+                <button type="submit" class="btn btn-success">Save</button>
+            </form>
         </div>
 
-        <form action="" method="get">
-            @if (isset($_GET['cuatri']))
-            <input type="hidden" name="cuatri" value={{$_GET['cuatri']}}>
-            @endif
-            <input type="hidden" name="save" value="si">
-            <button type="submit">Guardar</button>
-        </form>
+
     </div>
 </div>
 @stop

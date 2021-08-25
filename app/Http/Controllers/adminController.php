@@ -84,6 +84,7 @@ class adminController extends Controller
 
     public function edit($id)
     {
+        $user = DB::table('users')->where('id', '=', $id)->first();
         // Create -> Edit
         if(isset($_GET['cuatri']) && $_GET['cuatri'] !=0)
         {
@@ -113,7 +114,7 @@ class adminController extends Controller
         } else {
             //dump("Datos no guardados");
         }
-        return view('admin.edit', compact('materias', 'subjects'));
+        return view('admin.edit', compact('materias', 'subjects', 'user'));
     }
 
     /**

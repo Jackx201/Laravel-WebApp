@@ -40,8 +40,9 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Grade</th>
-                        <th>Graded</th>
+                        <th style="text-align: center">New Grade</th>
+                        <th style="text-align: center">Current Grade</th>
+                       
                     </tr>
                 </thead>
 
@@ -52,10 +53,15 @@
                             <th>{{$st->name}}</th>
                             <th>
                                 <input type="hidden" name="id[]" value={{$st->id}}>
-                                <input type="text" name="calif[]">
+
+                                
+                                    <input type="text" name="calif[]" class="form-control">
+                                
+                                
                                 <input type="hidden" name="cuatri" value={{$_GET['cuatri']}}>
                             </th>
-                            <th> <label for="">{{$st->calif}}</label> </th>
+                            <th style="text-align: center"> <label for="">{{$st->calif}}</label> </th>
+                            
                         </tr>
                     @endforeach
                     @endif

@@ -1,17 +1,19 @@
 {{-- Modified --}}
 @extends('layouts.plantilla')
 @section('content')
-<div class="container col-md-8">
+
+<div class="row">
+    <div class="col-sm-12">
     <h1 style="text-align: center; margin: 5%;">Assign a subject to a teacher</h1>
     <div class="card">
         <div class="card-body">
-           <table class="table-striped">
+           <table class="table table-striped">
                <thead>
                    <tr>
                        <th>ID</th>
                        <th>Name</th>
                        <th>E-Mail</th>
-                       <th></th>
+                       <th>Assign</th>
                    </tr>
                    <tbody>
                        {{-- Get Students --}}
@@ -19,8 +21,8 @@
                            <tr>
                                <th> {{$teach -> id}} </th>
                                <th> {{$teach -> name}} </th>
-                               <th> {{$teach -> email}} </th>
-                               <th width="3%">
+                               <th class="text-break"> {{$teach -> email}} </th>
+                               <th>
                                    {{-- We send the id of the selected student to Admin.edit --}}
                                    <a href=" {{route('teacher.edit', $teach->id)}}" class="btn btn-success">Asign</a>
                                </th>
@@ -35,5 +37,6 @@
     <div class="card-footer">
         {{$teacher->links()}}
     </div>
+</div>
 </div>
 @stop

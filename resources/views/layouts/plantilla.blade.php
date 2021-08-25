@@ -15,7 +15,7 @@
       {{-- Aqui va un menu --}}
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">UTLag</a>
+      <a class="navbar-brand" href="{{route('index')}}">Oakwood</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -41,10 +41,7 @@
               Student: {{Auth::user()->name}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{route('materias')}}">Materias</a>
-              <a class="dropdown-item" href="{{route('grades')}}">Curso</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{{route('menulog')}}">Subjects</a>
+              <a class="dropdown-item" href="{{route('menulog')}}">My grades</a>
             </div>
           </li>
           {{-- Dropdown  List for student --}}
@@ -58,11 +55,11 @@
               Admin: {{Auth::user()->name}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              @can('admin.assign.subjects.teacher')
-              <a class="dropdown-item" href="{{route('teacher.index')}}">Assign Subjects to teachers</a>
-              @endcan
               @can('admin.add.user')
               <a class="dropdown-item" href="{{route('admin.index')}}">Add User</a>
+              @endcan
+              @can('admin.assign.subjects.teacher')
+              <a class="dropdown-item" href="{{route('teacher.index')}}">Assign Subjects to teachers</a>
               @endcan
               @can('admin.assign.subjects.student')
               <a class="dropdown-item" href="{{route('admin.create')}}">Assign Subjects to students</a>
@@ -70,7 +67,8 @@
               @can('admin.assign.permission')
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{route('users.index')}}">Permissions</a> 
-              <a class="dropdown-item" href="http://127.0.0.1/phpmyadmin/index.php">Database</a> 
+              <a class="dropdown-item" href="{{route('grades')}}">Users</a> 
+              <a class="dropdown-item" href="{{route('materias')}}">Subjects</a> 
               @endcan
             </div>
           </li>
@@ -86,9 +84,6 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{{route('teacher.create')}}">Grade</a>
-              <a class="dropdown-item" href="#">Database</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Subjects</a>
             </div>
           </li>
           {{-- Dropdown  List for Teachers --}}
@@ -103,7 +98,7 @@
     </div>
   </nav>
   @show    
-<div class="row">
+<div class="container">
   @section('content')      
   @show
 </div>
@@ -112,7 +107,7 @@
 <footer class="page-footer font-small purple pt-4" style="margin-top: 5%">  
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-    <a class="text-reset fw-bold" href="https://jackx201.itch.io/">© Zahúl Guadalupe Domínguez Chávez 2021 </a>
+    <a class="text-reset fw-bold" href="https://jackx201.github.io/">© Zahúl Guadalupe Domínguez Chávez 2021 </a>
   </div>
   <!-- Copyright -->
 </footer>

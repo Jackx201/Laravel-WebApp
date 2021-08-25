@@ -32,7 +32,7 @@
                 <tr>
                     <th>{{$usrs->id}}</th>
                     <th>{{$usrs->name}}</th>
-                    <th>{{$usrs->email}}</th>
+                    <th class="text-break">{{$usrs->email}}</th>
                     <th> <a class="btn btn-success" href="{{route('users.edit', $usrs->id)}}">Save</a></th>
                 </tr>
                 @endforeach
